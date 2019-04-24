@@ -1,6 +1,9 @@
 package br.com.yaman.quitanda.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,6 +36,17 @@ public class ProdutoServiceImpl implements ProdutoService {
 	@Override
 	public void delete(Produto t) {
 		repository.delete(t);
+	}
+
+	@Override
+	public Map<String, Integer> getSumProdutoByTipo() {
+	  List<Produto> produtos = repository.findAll();
+	  
+	  Map<String, Integer> mapProdutos = new HashMap<String, Integer>();
+	  
+	   produtos.stream().collect(Collectors.groupingBy(p -> p.getTipoProduto().getNome())).forEach((k, v) -> mapProdutos.put(k,new Integer(v.size())));
+	   
+	   return mapProdutos;		
 	}
 
 }

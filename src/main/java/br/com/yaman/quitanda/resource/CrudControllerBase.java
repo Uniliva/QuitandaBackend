@@ -25,7 +25,7 @@ public abstract class CrudControllerBase<T> {
 		return ResponseEntity.ok(lts);
 	}
 
-	@PostMapping("save")
+	@PostMapping("/save")
 	public ResponseEntity<T> save(@RequestBody T t) {
 		T ts = getBusinessClass().save(t);
 		return ResponseEntity.status(HttpStatus.CREATED).body(ts);

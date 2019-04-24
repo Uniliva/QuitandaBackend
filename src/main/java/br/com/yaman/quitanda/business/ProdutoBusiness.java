@@ -1,6 +1,7 @@
 package br.com.yaman.quitanda.business;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
@@ -46,6 +47,11 @@ public class ProdutoBusiness implements GenericBusiness<ProdutoDTO> {
 	public void delete(ProdutoDTO p) {
 		LOGGER.info(" - delete executado: "+p.getNome()+ " sendo deletado");
 		service.delete(convertTOEntity(p));
+	}
+	
+	public Map<String, Integer> getSumProdutoByTipo() {
+		LOGGER.info(" - getSumProdutoByTipo:  sendo executado");
+		return service.getSumProdutoByTipo();
 	}
 
 	private Produto convertTOEntity(ProdutoDTO dto) {
