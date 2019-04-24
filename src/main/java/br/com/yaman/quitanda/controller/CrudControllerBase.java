@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
 import br.com.yaman.quitanda.business.GenericBusiness;
 import br.com.yaman.quitanda.wrapper.WrapperJsonObject;
@@ -57,9 +55,5 @@ public abstract class CrudControllerBase<T> {
         return tType;
     }
     
-    private Gson getNewGson() {
-		return new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
-				.create();
-	}
     
 }
