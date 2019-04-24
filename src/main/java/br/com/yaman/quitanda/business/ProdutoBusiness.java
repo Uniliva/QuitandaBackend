@@ -12,12 +12,11 @@ import br.com.yaman.quitanda.dao.entity.Produto;
 import br.com.yaman.quitanda.dao.entity.TipoProduto;
 import br.com.yaman.quitanda.dto.ProdutoDTO;
 import br.com.yaman.quitanda.dto.TipoProdutoDTO;
-import br.com.yaman.quitanda.resource.CrudControllerBase;
 import br.com.yaman.quitanda.service.ProdutoService;
 
 @Component
 public class ProdutoBusiness implements GenericBusiness<ProdutoDTO> {
-	private static final Logger LOGGER = LoggerFactory.getLogger(CrudControllerBase.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(ProdutoBusiness.class);
 
 	@Autowired
 	private ProdutoService service;
@@ -25,22 +24,27 @@ public class ProdutoBusiness implements GenericBusiness<ProdutoDTO> {
 	@Override
 	public List<ProdutoDTO> findAll() {
 		List<Produto> produtos = service.findAll();
+		LOGGER.info(" - findAll executado: "+produtos.size()+ " produtos retornados");
 		return produtos.stream().map(p -> convertTODto(p)).collect(Collectors.toList());
 	}
 
 	@Override
 	public ProdutoDTO save(ProdutoDTO p) {
 		Produto produto = service.save(convertTOEntity(p));
+		LOGGER.info(" - save executado: "+produto.getNome()+ " inserido");
 		return convertTODto(produto);
 	}
 
 	@Override
 	public ProdutoDTO findOne(Integer id) {
-		return convertTODto(service.findOne(id));
+		Produto p = service.findOne(id);
+		LOGGER.info(" - findOne executado: "+p.getNome()+ " Recuperado");
+		return convertTODto(p);
 	}
 
 	@Override
 	public void delete(ProdutoDTO p) {
+		LOGGER.info(" - delete executado: "+p.getNome()+ " sendo deletado");
 		service.delete(convertTOEntity(p));
 	}
 
