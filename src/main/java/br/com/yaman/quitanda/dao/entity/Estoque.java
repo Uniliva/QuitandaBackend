@@ -23,7 +23,7 @@ import lombok.NoArgsConstructor;
 public class Estoque {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "EstoqueSeq")
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "EstoqueSeq")
     @Column(name = "COD_ESTOQUE")
 	private Integer id;
 	
