@@ -1,4 +1,4 @@
-package br.com.yaman.quitanda.controller;
+package br.com.yaman.quitanda.resource;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
