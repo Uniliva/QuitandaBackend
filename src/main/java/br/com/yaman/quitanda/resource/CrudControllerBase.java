@@ -1,59 +1,47 @@
 package br.com.yaman.quitanda.resource;
 
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
-import java.util.ArrayList;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
+import org.springframework.web.bind.annotation.RestController;
 
 import br.com.yaman.quitanda.business.GenericBusiness;
-import br.com.yaman.quitanda.wrapper.WrapperJsonObject;
 
-
+@RestController
+@RequestMapping
 public abstract class CrudControllerBase<T> {
-	private static final Logger LOGGER = LoggerFactory.getLogger(CrudControllerBase.class);
-    public static final String JSON = "application/json";
-    
-    public abstract GenericBusiness<T> getBusinessClass();
 
-    @RequestMapping(value = "/find-all", method = RequestMethod.GET)
-    public List<T> pageLoad() {
-    	try {
-    		return getBusinessClass().findAll();
-		} catch (Exception e) {
-			LOGGER.error(e.getMessage(),e);
-			return new ArrayList<T>();
-		}
-        
-    }
-  
-    @RequestMapping(value = "save", method = RequestMethod.POST)
-    public T save(@RequestBody WrapperJsonObject<T> t) {
-        return getBusinessClass().save(t.getT());
-    }
+	public abstract GenericBusiness<T> getBusinessClass();
 
-    @RequestMapping(value = "/find-one", method = RequestMethod.GET)
-    public T findOne(@RequestParam Integer id) {
-        return getBusinessClass().findOne(id);
-    }
+	@GetMapping("/find-all")
+	public ResponseEntity<List<T>> pageLoad() {
+		List<T> lts = getBusinessClass().findAll();
+		return ResponseEntity.ok(lts);
+	}
 
-    @RequestMapping(value = "/delete", method = RequestMethod.POST)
-    public void delete(@RequestBody WrapperJsonObject<T> t) {
-    	getBusinessClass().delete(t.getT());
-    }
+	@PostMapping("save")
+	public ResponseEntity<T> save(@RequestBody T t) {
+		T ts = getBusinessClass().save(t);
+		return ResponseEntity.ok(ts);
+	}
 
-    public Type getClassType() {
-        Type mySuperclass = this.getClass().getGenericSuperclass();
-        Type tType = ((ParameterizedType) mySuperclass).getActualTypeArguments()[0];
-        return tType;
-    }
-    
-    
+	@GetMapping("/find-one") //.../find-one?id=abc
+	public ResponseEntity<T> findOne(@RequestParam Integer id) {
+		T tOne = getBusinessClass().findOne(id);
+		return ResponseEntity.ok(tOne);
+	}
+	
+
+	@PostMapping("/delete")
+	public ResponseEntity<Void> delete(@RequestBody T t) {
+		getBusinessClass().delete(t);
+		return ResponseEntity.status(HttpStatus.OK).build();
+	}
+
 }
