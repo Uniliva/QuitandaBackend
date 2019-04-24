@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import br.com.yaman.quitanda.business.GenericCrudBusiness;
+import br.com.yaman.quitanda.business.GenericBusiness;
 import br.com.yaman.quitanda.wrapper.WrapperJsonObject;
 
 
@@ -23,7 +23,7 @@ public abstract class CrudControllerBase<T> {
 	private static final Logger LOGGER = LoggerFactory.getLogger(CrudControllerBase.class);
     public static final String JSON = "application/json";
     
-    public abstract GenericCrudBusiness<T> getBusinessClass();
+    public abstract GenericBusiness<T> getBusinessClass();
 
     @RequestMapping(value = "/find-all", method = RequestMethod.GET)
     public List<T> pageLoad() {

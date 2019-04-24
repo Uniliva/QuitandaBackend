@@ -9,7 +9,7 @@ import br.com.yaman.quitanda.dao.entity.Produto;
 import br.com.yaman.quitanda.service.ProdutoService;
 
 @Component
-public class ProdutoBusiness implements GenericCrudBusiness<Produto> {
+public class ProdutoBusiness implements GenericBusiness<Produto> {
 
 	@Autowired
 	private ProdutoService service;

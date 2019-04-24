@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.yaman.quitanda.business.GenericCrudBusiness;
+import br.com.yaman.quitanda.business.GenericBusiness;
 import br.com.yaman.quitanda.business.ProdutoBusiness;
 import br.com.yaman.quitanda.dao.entity.Produto;
 import br.com.yaman.quitanda.dao.entity.TipoProduto;
@@ -21,7 +21,7 @@ public class ProdutoController extends CrudControllerBase<Produto> {
 	private ProdutoBusiness business;
 
 	@Override
-	public GenericCrudBusiness<Produto> getBusinessClass() {		
+	public GenericBusiness<Produto> getBusinessClass() {		
 		return business;
 	}
 
