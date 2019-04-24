@@ -6,13 +6,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.com.yaman.quitanda.dao.entity.Produto;
 
-/**
- * 
- * @author marcus.martins
- *
- */
 @Repository
 @Transactional
-public interface ProdutoRepository extends JpaCustomRepository<Produto> {
-	
-}
+public interface ProdutoRepository extends JpaCustomRepository<Produto> {}
