@@ -28,7 +28,7 @@ public abstract class CrudControllerBase<T> {
 	@PostMapping("save")
 	public ResponseEntity<T> save(@RequestBody T t) {
 		T ts = getBusinessClass().save(t);
-		return ResponseEntity.ok(ts);
+		return ResponseEntity.status(HttpStatus.CREATED).body(ts);
 	}
 
 	@GetMapping("/find-one") //.../find-one?id=abc
@@ -41,7 +41,7 @@ public abstract class CrudControllerBase<T> {
 	@PostMapping("/delete")
 	public ResponseEntity<Void> delete(@RequestBody T t) {
 		getBusinessClass().delete(t);
-		return ResponseEntity.status(HttpStatus.OK).build();
+		return ResponseEntity.noContent().build();
 	}
 
 }
