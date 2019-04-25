@@ -38,6 +38,7 @@ public class ProdutoServiceImpl implements ProdutoService {
 		repository.delete(t);
 	}
 
+
 	@Override
 	public Map<String, Integer> getSumProdutoByTipo() {
 	  List<Produto> produtos = repository.findAll();
