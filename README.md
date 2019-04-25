@@ -22,7 +22,7 @@
  - Adicionar segurança autorização e autenticação com spring security
  - Adicionar tratativa erros em todas as requisições (handlers)
  - Melhorar o mappeamento Dto <=> entity, talves com modelmapper
- - implemtar os testes
+ - implementar os testes
 
 
 ## Quitanda do Barnabé
