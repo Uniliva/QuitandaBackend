@@ -17,7 +17,7 @@ import br.com.yaman.quitanda.business.GenericBusiness;
 @RestController
 @RequestMapping
 @CrossOrigin(allowedHeaders = "*")
-public abstract class CrudControllerBase<T> {
+public abstract class ResourceBase<T> {
 
 	public abstract GenericBusiness<T> getBusinessClass();
 

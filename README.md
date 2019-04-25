@@ -1,3 +1,30 @@
+## Informações
+
+#### Avisos
+- O framework lombok estava inicialmente configurado no projeto, porem como não consefui realizar a instalação dele no STS 4, resolvi remover para não prejudicar o desenvolvimento
+- Não consegui conectar com 0 bando Oracle, parece que esta fora, porem configurei o projeto de forma que aceita trabalhar com qualquer banco, e para teste e desenvolvimento utilizei o H2 em memoria
+
+#### Executar o projeto
+
+1. Realize o clone do projeto e importe como projeto maven (Pode ser que dê um erro devido à falta de ojdbc6.jar no repositório maven - [use essa solução](https://stackoverflow.com/questions/44238622/missing-artifact-com-oracleojdbc6jar11-2-0-3))
+2. Executar como spring boot app
+3. url dos recursos 
+	- /produto/find-all - retorna todos os produtos sem paginação
+	- /produto/total-por-tipo - retorna a quantidade de produto por tipo
+	
+#### Melhorias realizada
+- Adicionado Dtos
+- Refatorado resources
+- Adicionado Exception padroes e handlers para tratar erros das requisições
+
+#### Melhorias que não deu tempo de fazer
+ - Adicionar paginação nas consultas do tipo find all
+ - Adicionar segurança autorização e autenticação com spring security
+ - Adicionar tratativa erros em todas as requisições (handlers)
+ - Melhorar o mappeamento Dto <=> entity, talves com modelmapper
+ - implemtar os testes
+
+
 ## Quitanda do Barnabé
 <cenario>
 Barnabé é um quitandeiro muito antenado nas últimas tendências de técnicas que auxiliem o seu negócio, porém nem sempre foi assim.

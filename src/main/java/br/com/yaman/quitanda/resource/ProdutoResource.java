@@ -16,7 +16,7 @@ import br.com.yaman.quitanda.dto.ProdutoDTO;
 @RestController
 @RequestMapping(value = "produto")
 @CrossOrigin(allowedHeaders = "*")
-public class ProdutoController extends CrudControllerBase<ProdutoDTO> {
+public class ProdutoResource extends ResourceBase<ProdutoDTO> {
 	
 	@Autowired
 	private ProdutoBusiness business;
