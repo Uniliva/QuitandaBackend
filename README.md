@@ -23,7 +23,7 @@
  - Adicionar tratativa erros em todas as requisições (handlers)
  - Melhorar o mappeamento Dto <=> entity, talves com modelmapper
  - implementar os testes
-
+<hr>
 
 ## Quitanda do Barnabé
 <cenario>
